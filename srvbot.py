@@ -7,6 +7,7 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Mess
 load_dotenv()
 
 token = os.getenv("BOT_TOKEN")
+port = os.getenv("SSH_PORT")
 #ssh_hostname = os.getenv("SSH_HOSTNAME")
 ssh_hostname = "host.docker.internal"
 
@@ -14,7 +15,7 @@ def ssh_command(command: str) -> str:
 
     try:
         result = subprocess.run(
-        ["ssh", ssh_hostname, command],
+        ["ssh", "-p", port, ssh_hostname, command],
         capture_output=True,
         text=True,
         timeout=20
