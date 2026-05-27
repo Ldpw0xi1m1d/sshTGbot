@@ -15,7 +15,7 @@ def ssh_command(command: str) -> str:
 
     try:
         result = subprocess.run(
-        ["ssh", "-p", port, ssh_hostname, command],
+        ["ssh", "-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null", "-p", port, ssh_hostname, command],
         capture_output=True,
         text=True,
         timeout=20
