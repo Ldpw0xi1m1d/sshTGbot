@@ -7,7 +7,8 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Mess
 load_dotenv()
 
 token = os.getenv("BOT_TOKEN")
-ssh_hostname = os.getenv("SSH_HOSTNAME")
+#ssh_hostname = os.getenv("SSH_HOSTNAME")
+ssh_hostname = "host.docker.internal"
 
 def ssh_command(command: str) -> str:
 

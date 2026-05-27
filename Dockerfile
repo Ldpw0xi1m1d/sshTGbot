@@ -1,13 +1,13 @@
-FROM python:3.11-slim
+FROM python:3.11-alpine
+
+# Установка SSH в Alpine
+RUN apk add --no-cache openssh-client
 
 WORKDIR /srvbot
 
-# Копируем зависимости
 COPY dependencies.txt .
 RUN pip install --no-cache-dir -r dependencies.txt
 
-# Копируем код и .env
 COPY . .
 
-# Запуск бота
 CMD ["python", "srvbot.py"]
